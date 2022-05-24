@@ -21,7 +21,7 @@ const Navbar = (props) => {
               Nueva
             </Link>
             <Link to={PATHS.USER} className="authLink">
-              Usuario
+              Usuario - {props.user.username}
             </Link>
             <button className="nav-logoutbtn" onClick={props.handleLogout}>
               Logout

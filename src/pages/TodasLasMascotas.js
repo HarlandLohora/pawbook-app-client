@@ -1,26 +1,35 @@
 import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom';
 import { Card } from 'antd';
 import axios from 'axios';
 const { Meta } = Card;
 
 const TodasLasMascotas = () => {
+    const [mascotas, setMascotas] = useState([])
     useEffect(() => {
         axios.get("http://localhost:5005/api/mascotas/all")
-            .then(datos => console.log(datos.data))
+            .then(datos => setMascotas(datos.data.mascotas))
             .catch(console.log)
     }, [])
     return (
         <div>TodasLasMascotas
+            {
+                mascotas.map(mascota => {
+                    return (
+                        <Link key={mascota._id} to={`/detalle/${mascota._id}`}>
+                            <Card
+                                hoverable
+                                style={{
+                                    width: 240,
+                                }}
+                                cover={<img alt="example" src={mascota.photo} />}
+                            >
+                                <Meta title={mascota.name} description={mascota.breed} />
+                            </Card>
+                        </Link>)
+                })
+            }
 
-            <Card
-                hoverable
-                style={{
-                    width: 240,
-                }}
-                cover={<img alt="example" src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png" />}
-            >
-                <Meta title="Europe Street beat" description="www.instagram.com" />
-            </Card>
         </div>
     )
 }

@@ -1,8 +1,8 @@
 import React from 'react'
 
-const Nueva = () => {
+const Nueva = (props) => {
     return (
-        <div>Nueva</div>
+        <div>Nueva {props.user?._id}</div>
     )
 }
 

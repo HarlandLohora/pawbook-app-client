@@ -8,6 +8,7 @@ import ProductsPage from "../pages/ProductsPage";
 import Usuario from "../pages/Usuario";
 import Nueva from "../pages/Nueva";
 import TodasLasMascotas from "../pages/TodasLasMascotas";
+import DetailPage from "../pages/DetailPage";
 
 const routes = (props) => {
   const { user } = props;
@@ -51,6 +52,10 @@ const routes = (props) => {
     {
       path: "/all-mascotas",
       element: <TodasLasMascotas  {...props} />
+    },
+    {
+      path: "/detalle/:id",
+      element: <DetailPage {...props} />
     }
   ];
 };
