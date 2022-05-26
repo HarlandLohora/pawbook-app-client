@@ -5,7 +5,7 @@ import { useEffect } from 'react'
 
 const ProductsPage = (props) => {
     useEffect(() => {
-        axios.get("http://localhost:5005/api/todoslosproductos")
+        axios.get(`${process.env.REACT_APP_SERVER_URL}/todoslosproductos`)
             .then(datos => console.log(datos.data))
             .catch(console.log)
     }, [])

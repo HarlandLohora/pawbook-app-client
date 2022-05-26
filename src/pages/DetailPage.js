@@ -10,7 +10,7 @@ const DetailPage = (props) => {
     //toggle
     const [showEdit, setShowEdit] = useState(false)
     useEffect(() => {
-        axios.get(`http://localhost:5005/api/mascotas/details/${id}`)
+        axios.get(`${process.env.REACT_APP_SERVER_URL}/mascotas/details/${id}`)
             .then(lainfo => {
                 console.log(lainfo)
                 setMascota(lainfo.data)

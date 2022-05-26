@@ -7,7 +7,7 @@ const { Meta } = Card;
 const TodasLasMascotas = () => {
     const [mascotas, setMascotas] = useState([])
     useEffect(() => {
-        axios.get("http://localhost:5005/api/mascotas/all")
+        axios.get(`${process.env.REACT_APP_SERVER_URL}/mascotas/all`)
             .then(datos => setMascotas(datos.data.mascotas))
             .catch(console.log)
     }, [])
